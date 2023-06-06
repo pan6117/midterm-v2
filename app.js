@@ -20,12 +20,12 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const url = "mongodb://localhost:27017/midtermDB";
+const url = "mongodb+srv://admin-pan:Test123@cluster0.pyd16yp.mongodb.net/v2DB";
 
 mongoose
   .connect(url, { useNewUrlParser: true })
   .then(() => {
-    console.log("Connected to midtermDB.");
+    console.log("Connected to v2DB.");
   })
   .catch((err) => {
     console.log(err);
