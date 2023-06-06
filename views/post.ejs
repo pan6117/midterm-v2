@@ -1,0 +1,12 @@
+<%- include("partials/header"); -%>
+
+<h1 class="homePage"><%=title%></h1>
+<p class="homePage"><%=content%></p>
+<ul>
+  <li>Tags: <a href="/tags/<%= tags %>"><%= tags %></a></li>
+  <li>
+    Categories: <a href="/categories/<%= categories %>"><%= categories %></a>
+  </li>
+</ul>
+
+<%- include("partials/footer"); -%>
