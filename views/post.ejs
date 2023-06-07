@@ -1,12 +1,18 @@
 <%- include("partials/header"); -%>
 
-<h1 class="homePage"><%=title%></h1>
+<h1 class="homePage">Post</h1>
+
+<h2 class="homePage"><%=title%></h2>
 <p class="homePage"><%=content%></p>
 <ul>
-  <li>Tags: <a href="/tags/<%= tags %>"><%= tags %></a></li>
-  <li>
-    Categories: <a href="/categories/<%= categories %>"><%= categories %></a>
-  </li>
+  <li>Tags:</li>
+  <% tags.forEach(function(tag){ %>
+  <a href="/tags/<%=tag%>"><%=tag%></a>
+  <% }) %>
+  <li>Categories:</li>
+  <% categories.forEach(function(category){ %>
+  <a href="/categories/<%=category%>"><%=category%></a>
+  <% }) %>
 </ul>
 
 <%- include("partials/footer"); -%>

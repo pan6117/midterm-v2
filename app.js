@@ -114,7 +114,7 @@ const postSchema = new mongoose.Schema({
 const Post = mongoose.model("Post", postSchema);
 
 app.get("/", (req, res) => {
-  res.redirect("/home");
+  res.redirect("/registration");
 });
 
 app.get("/home", (req, res) => {
@@ -196,14 +196,13 @@ app.get("/tags/:tagId", (req, res) => {
   //console.log(req.params.tagId);
   const requestedTagId = req.params.tagId;
 
-  Post.findOne({ tags: requestedTagId })
+  Tags.findOne({ _id: requestedTagId })
     .then((tags) => {
       //console.log(tags);
       res.render("tags", {
         title: tags.title,
         content: tags.content,
-        tags: tags.tags,
-        categories: tags.categories,
+        post: tags.post,
       });
     })
     .catch((err) => {
@@ -228,19 +227,18 @@ const categoriesSchema = new mongoose.Schema({
   ],
 });
 
-const categories = mongoose.model("categories", categoriesSchema);
+const Categories = mongoose.model("categories", categoriesSchema);
 
 app.get("/categories/:categoriesId", (req, res) => {
   //console.log(req.params.categoriesId);
   const requestedCategoriesId = req.params.categoriesId;
 
-  Post.findOne({ categories: requestedCategoriesId })
+  Categories.findOne({ _id: requestedCategoriesId })
     .then((categories) => {
       res.render("categories", {
         title: categories.title,
         content: categories.content,
-        tags: categories.tags,
-        categories: categories.categories,
+        post: categories.post,
       });
     })
     .catch((err) => {
